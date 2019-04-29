@@ -1,0 +1,47 @@
+#!/bin/bash
+for u in {1..10}
+do
+useradd -p Password123 user$u
+done
+for u in {1..10}
+do
+echo "Enter the Password Expiry Age in Days for user$u"
+read d
+chage  -M $d user$u
+echo "Password Expiry Age is set to $d days. "
+done
+
+echo -ne 'Can't you see it's---> '
+sleep 0.25
+echo -ne 'L.'
+sleep 0.25
+echo -ne 'O.'
+sleep 0.25
+echo -ne 'A.'
+sleep 0.25
+echo -ne 'D.'
+sleep 0.25
+echo -ne 'I.'
+sleep 0.25
+echo -ne 'N.'
+sleep 0.25
+echo -ne 'G.'
+sleep 0.25
+echo -ne '..'
+sleep 0.25
+echo -ne '....'
+sleep 0.25
+echo -ne '......!!!'
+sleep 0.25
+echo "Completed... "
+
+
+for u in user{1..10}
+do
+echo -ne  "Password Expiry Date for $u : "
+chage -l user1 | grep "Password expires" | awk -F':' '{print $2}'
+echo -ne "Shell for $u :"
+cat /etc/passwd |grep  "$u" | awk -F':' '{print$7}'
+echo -ne
+done
+                                                                                                                                    1,1           Top
